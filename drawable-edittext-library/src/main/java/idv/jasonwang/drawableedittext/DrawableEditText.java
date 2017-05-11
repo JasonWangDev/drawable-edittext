@@ -3,6 +3,7 @@ package idv.jasonwang.drawableedittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
 /**
@@ -21,6 +22,11 @@ import android.util.AttributeSet;
  */
 public class DrawableEditText extends android.support.v7.widget.AppCompatEditText {
 
+    private Drawable drawableLeft;
+    private Drawable drawableRight;
+
+    private int[] drawableSize = {0, 0};
+
     public DrawableEditText(Context context) {
         super(context);
 
@@ -37,6 +43,38 @@ public class DrawableEditText extends android.support.v7.widget.AppCompatEditTex
         super(context, attrs, defStyleAttr);
 
         init(context, attrs);
+    }
+
+    public void setDrawableLeft(int res) {
+        drawableLeft = ContextCompat.getDrawable(getContext(), res);
+
+        setDrawable();
+    }
+
+    public void setDrawableRight(int res) {
+        drawableRight = ContextCompat.getDrawable(getContext(), res);
+
+        setDrawable();
+    }
+
+    public void setDrawableSize(int width, int height) {
+        this.drawableSize[0] = width;
+        this.drawableSize[1] = height;
+
+        setDrawable();
+    }
+
+    private void setDrawable() {
+        if (drawableLeft != null)
+        {
+            drawableLeft.setBounds(0, 0, drawableSize[0], drawableSize[1]);
+            setCompoundDrawables(drawableLeft, null, null, null);
+        }
+        else if (drawableRight != null)
+        {
+            drawableRight.setBounds(0, 0, drawableSize[0], drawableSize[1]);
+            setCompoundDrawables(null, null, drawableRight, null);
+        }
     }
 
     private void init(Context context, AttributeSet attrs) {
