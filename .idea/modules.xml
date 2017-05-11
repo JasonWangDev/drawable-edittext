@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Drawable-EditText-Sample.iml" filepath="$PROJECT_DIR$/Drawable-EditText-Sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drawable-edittext-library/drawable-edittext-library.iml" filepath="$PROJECT_DIR$/drawable-edittext-library/drawable-edittext-library.iml" />
     </modules>
   </component>
 </project>
