@@ -14,12 +14,29 @@
         android:drawablePadding="10dp"
         android:hint="key something..."
         android:padding="10dp"
-        app:drawableHeight="20dp"
-        app:drawableLeft="@mipmap/ic_launcher_round"
-        app:drawableWidth="20dp"
+        app:drawableBottom="@android:drawable/ic_menu_day"
+        app:drawableBottomHeight="10dp"
+        app:drawableBottomWidth="10dp"
+        app:drawableLeft="@android:drawable/ic_menu_crop"
+        app:drawableLeftHeight="20dp"
+        app:drawableLeftWidth="20dp"
+        app:drawableRight="@android:drawable/ic_menu_camera"
+        app:drawableRightHeight="30dp"
+        app:drawableRightWidth="30dp"
+        app:drawableTop="@android:drawable/ic_menu_add"
+        app:drawableTopHeight="100dp"
+        app:drawableTopWidth="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>

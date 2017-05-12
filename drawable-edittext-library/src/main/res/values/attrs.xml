@@ -4,13 +4,32 @@
     <declare-styleable name="DrawableEditText">
         <!-- 設置圖片在左方 -->
         <attr name="drawableLeft" format="reference" />
+        <!-- 設置圖片在上方 -->
+        <attr name="drawableTop" format="reference" />
         <!-- 設置圖片在右方 -->
         <attr name="drawableRight" format="reference" />
+        <!-- 設置圖片在下方 -->
+        <attr name="drawableBottom" format="reference" />
 
-        <!-- 設置圖片寬度 -->
-        <attr name="drawableWidth" format="dimension" />
-        <!-- 設置圖片高度 -->
-        <attr name="drawableHeight" format="dimension" />
+        <!-- 設置左方圖片的寬度 -->
+        <attr name="drawableLeftWidth" format="dimension" />
+        <!-- 設置左方圖片的高度 -->
+        <attr name="drawableLeftHeight" format="dimension" />
+
+        <!-- 設置上方圖片的寬度 -->
+        <attr name="drawableTopWidth" format="dimension" />
+        <!-- 設置上方圖片的高度 -->
+        <attr name="drawableTopHeight" format="dimension" />
+
+        <!-- 設置右方圖片的寬度 -->
+        <attr name="drawableRightWidth" format="dimension" />
+        <!-- 設置右方圖片的高度 -->
+        <attr name="drawableRightHeight" format="dimension" />
+
+        <!-- 設置下方圖片的寬度 -->
+        <attr name="drawableBottomWidth" format="dimension" />
+        <!-- 設置下方圖片的高度 -->
+        <attr name="drawableBottomHeight" format="dimension" />
     </declare-styleable>
 
 </resources>
