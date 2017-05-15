@@ -16,7 +16,8 @@ public class SampleActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((DrawableEditText) findViewById(R.id.drawableEditText)).setDrawableLeft(android.R.drawable.ic_menu_call);
+                ((DrawableEditText) findViewById(R.id.drawableEditText)).setDrawableBottomSize(100, 100);
+                ((DrawableEditText) findViewById(R.id.drawableEditText)).setDrawableBottom(android.R.drawable.ic_menu_call);
             }
         });
     }
