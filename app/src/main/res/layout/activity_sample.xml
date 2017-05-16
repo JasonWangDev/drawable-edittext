@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="idv.jasonwang.drawableedittext.sample.SampleActivity">
+    tools:context="idv.jasonwang.widgetutils.sample.SampleActivity">
 
-    <idv.jasonwang.drawableedittext.DrawableEditText
+    <idv.jasonwang.widgetutils.DrawableEditText
         android:id="@+id/drawableEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,16 +27,50 @@
         app:drawableTopHeight="100dp"
         app:drawableTopWidth="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/drawableEditText"
+        app:layout_constraintLeft_toRightOf="@+id/drawableEditText"
+        app:layout_constraintTop_toTopOf="@+id/drawableEditText" />
+
+    <idv.jasonwang.widgetutils.DrawableCheckBox
+        android:id="@+id/drawableCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@null"
+        android:button="@null"
+        android:drawablePadding="15dp"
+        android:text="Test CheckBox"
+        app:drawableLeft="@drawable/test_checkbox_icon"
+        app:drawableLeftHeight="25dp"
+        app:drawableLeftWidth="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/drawableCheckBox"
+        app:layout_constraintLeft_toLeftOf="@+id/drawableCheckBox"
+        app:layout_constraintRight_toRightOf="@+id/drawableCheckBox" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 設置圖片在左方 -->
+    <attr name="drawableLeft" format="reference" />
+    <!-- 設置圖片在上方 -->
+    <attr name="drawableTop" format="reference" />
+    <!-- 設置圖片在右方 -->
+    <attr name="drawableRight" format="reference" />
+    <!-- 設置圖片在下方 -->
+    <attr name="drawableBottom" format="reference" />
+
+    <!-- 設置左方圖片的寬度 -->
+    <attr name="drawableLeftWidth" format="dimension" />
+    <!-- 設置左方圖片的高度 -->
+    <attr name="drawableLeftHeight" format="dimension" />
+
+    <!-- 設置上方圖片的寬度 -->
+    <attr name="drawableTopWidth" format="dimension" />
+    <!-- 設置上方圖片的高度 -->
+    <attr name="drawableTopHeight" format="dimension" />
+
+    <!-- 設置右方圖片的寬度 -->
+    <attr name="drawableRightWidth" format="dimension" />
+    <!-- 設置右方圖片的高度 -->
+    <attr name="drawableRightHeight" format="dimension" />
+
+    <!-- 設置下方圖片的寬度 -->
+    <attr name="drawableBottomWidth" format="dimension" />
+    <!-- 設置下方圖片的高度 -->
+    <attr name="drawableBottomHeight" format="dimension" />
+
+
+    <declare-styleable name="DrawableEditText">
+        <attr name="drawableLeft" />
+        <attr name="drawableTop" />
+        <attr name="drawableRight" />
+        <attr name="drawableBottom" />
+
+        <attr name="drawableLeftWidth" />
+        <attr name="drawableLeftHeight" />
+
+        <attr name="drawableTopWidth" />
+        <attr name="drawableTopHeight" />
+
+        <attr name="drawableRightWidth" />
+        <attr name="drawableRightHeight" />
+
+        <attr name="drawableBottomWidth" />
+        <attr name="drawableBottomHeight" />
+    </declare-styleable>
+
+
+    <declare-styleable name="DrawableCheckBox">
+        <attr name="drawableLeft" />
+        <attr name="drawableTop" />
+        <attr name="drawableRight" />
+        <attr name="drawableBottom" />
+
+        <attr name="drawableLeftWidth" />
+        <attr name="drawableLeftHeight" />
+
+        <attr name="drawableTopWidth" />
+        <attr name="drawableTopHeight" />
+
+        <attr name="drawableRightWidth" />
+        <attr name="drawableRightHeight" />
+
+        <attr name="drawableBottomWidth" />
+        <attr name="drawableBottomHeight" />
+    </declare-styleable>
+
+</resources>

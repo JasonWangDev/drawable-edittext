@@ -1,1 +1,1 @@
-include ':app', ':drawable-edittext-library'
+include ':app', ':widget-utils-library'
