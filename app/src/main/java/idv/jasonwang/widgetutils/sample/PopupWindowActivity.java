@@ -1,6 +1,7 @@
 package idv.jasonwang.widgetutils.sample;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +69,12 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
 //        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.bottom);
         // 中上
         popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.top - contentHeight);
+    }
+
+    private Point getPoint(Position position, View parent, View content) {
+
+
+        return null;
     }
 
 
