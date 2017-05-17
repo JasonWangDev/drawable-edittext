@@ -49,9 +49,25 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Log.d("TAG", getPosition(this, parent, view).toString());
+        Rect parentRect = new Rect();
+        parent.getGlobalVisibleRect(parentRect);
 
-        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, 37, 136);  // X,Y 是指 PopupWindow 的左上角位置
+        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int contentWidth = view.getMeasuredWidth();
+        int contentHeight = view.getMeasuredHeight();
+
+        // 左下
+//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.left, parentRect.bottom);  // X,Y 是指 PopupWindow 的左上角位置
+        // 左上
+//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.left, parentRect.top - contentHeight);
+        // 右下
+//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.right - contentWidth, parentRect.bottom);
+        // 右上
+//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.right - contentWidth, parentRect.top - contentHeight);
+        // 中下
+//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.bottom);
+        // 中上
+        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.top - contentHeight);
     }
 
 
