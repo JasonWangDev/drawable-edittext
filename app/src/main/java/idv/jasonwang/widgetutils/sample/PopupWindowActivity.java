@@ -1,5 +1,6 @@
 package idv.jasonwang.widgetutils.sample;
 
+import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Log.d("TAG", getPosition(parent, view).toString());
+        Log.d("TAG", getPosition(this, parent, view).toString());
 
         popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, 37, 136);  // X,Y 是指 PopupWindow 的左上角位置
     }
@@ -147,17 +148,18 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
 
     /**
      *
-     * @param parent 父元件
+     * @param activity 啟動 PopupWindow 的 Activity
+     * @param parent PopupWindow 依附的父元件
      * @param content PopupWindow 內的 ContentView
      * @return
      */
-    private Position getPosition(View parent, View content) {
+    private Position getPosition(Activity activity, View parent, View content) {
         if (parent == null || content == null)
             return null;
 
         // 螢幕尺寸(px)
         DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenWidth = metrics.widthPixels;
         int screenHeight = metrics.heightPixels;
 
