@@ -53,7 +53,90 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
         popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, 37, 136);  // X,Y 是指 PopupWindow 的左上角位置
     }
 
-    enum Position {
+
+    private int getRightOffsetX() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        switch (metrics.densityDpi)
+        {
+            default:
+            case DisplayMetrics.DENSITY_MEDIUM:
+                return 10;
+
+            case DisplayMetrics.DENSITY_HIGH:
+                return 12;
+
+            case DisplayMetrics.DENSITY_XHIGH:
+                return 14;
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+                return 23;
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                return 30;
+        }
+    }
+
+    private int getLeftOffsetX() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        switch (metrics.densityDpi)
+        {
+            default:
+            case DisplayMetrics.DENSITY_MEDIUM:
+                return 1;
+
+            case DisplayMetrics.DENSITY_HIGH:
+                return 3;
+
+            case DisplayMetrics.DENSITY_XHIGH:
+                return 4;
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+                return 7;
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                return 10;
+        }
+    }
+
+    private int getCenterOffsetX() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        switch (metrics.densityDpi)
+        {
+            default:
+            case DisplayMetrics.DENSITY_MEDIUM:
+                return 0;
+
+            case DisplayMetrics.DENSITY_HIGH:
+                return 0;
+
+            case DisplayMetrics.DENSITY_XHIGH:
+                return 0;
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+                return 0;
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                return 0;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    // ************************************ 完成測試 ************************************ //
+
+    public enum Position {
         TopCenter,
         BottomCenter,
         TopLeft,
@@ -127,79 +210,6 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
                 else
                     return Position.TopRight;
             }
-        }
-    }
-
-
-    private int getRightOffsetX() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        switch (metrics.densityDpi)
-        {
-            default:
-            case DisplayMetrics.DENSITY_MEDIUM:
-                return 10;
-
-            case DisplayMetrics.DENSITY_HIGH:
-                return 12;
-
-            case DisplayMetrics.DENSITY_XHIGH:
-                return 14;
-
-            case DisplayMetrics.DENSITY_XXHIGH:
-                return 23;
-
-            case DisplayMetrics.DENSITY_XXXHIGH:
-                return 30;
-        }
-    }
-
-    private int getLeftOffsetX() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        switch (metrics.densityDpi)
-        {
-            default:
-            case DisplayMetrics.DENSITY_MEDIUM:
-                return 1;
-
-            case DisplayMetrics.DENSITY_HIGH:
-                return 3;
-
-            case DisplayMetrics.DENSITY_XHIGH:
-                return 4;
-
-            case DisplayMetrics.DENSITY_XXHIGH:
-                return 7;
-
-            case DisplayMetrics.DENSITY_XXXHIGH:
-                return 10;
-        }
-    }
-
-    private int getCenterOffsetX() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        switch (metrics.densityDpi)
-        {
-            default:
-            case DisplayMetrics.DENSITY_MEDIUM:
-                return 0;
-
-            case DisplayMetrics.DENSITY_HIGH:
-                return 0;
-
-            case DisplayMetrics.DENSITY_XHIGH:
-                return 0;
-
-            case DisplayMetrics.DENSITY_XXHIGH:
-                return 0;
-
-            case DisplayMetrics.DENSITY_XXXHIGH:
-                return 0;
         }
     }
 
