@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,32 +49,14 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Rect parentRect = new Rect();
-        parent.getGlobalVisibleRect(parentRect);
+        Point point = getPoint(getPosition(this, parent, view), parent, view);
+        int x = point.x;
+        int y = point.y;
 
-        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int contentWidth = view.getMeasuredWidth();
-        int contentHeight = view.getMeasuredHeight();
-
-        // 左下
-//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.left, parentRect.bottom);  // X,Y 是指 PopupWindow 的左上角位置
-        // 左上
-//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.left, parentRect.top - contentHeight);
-        // 右下
-//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.right - contentWidth, parentRect.bottom);
-        // 右上
-//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.right - contentWidth, parentRect.top - contentHeight);
-        // 中下
-//        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.bottom);
-        // 中上
-        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, parentRect.centerX() - contentWidth / 2, parentRect.top - contentHeight);
+        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, x, y);
     }
 
-    private Point getPoint(Position position, View parent, View content) {
 
-
-        return null;
-    }
 
 
     private int getRightOffsetX() {
@@ -235,6 +216,50 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
                 else
                     return Position.TopRight;
             }
+        }
+    }
+
+    /**
+     *
+     * @param position 傳入 PopupWindow 顯示的位置
+     * @param parent 傳入 PopupWindow 要依附要依附的父元件
+  * @param content
+     * @return
+     */
+    private Point getPoint(Position position, View parent, View content) {
+        Rect parentRect = new Rect();
+        parent.getGlobalVisibleRect(parentRect);
+
+        content.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int contentWidth = content.getMeasuredWidth();
+        int contentHeight = content.getMeasuredHeight();
+
+        switch (position)
+        {
+            default:
+            case TopCenter:
+                return new Point(parentRect.centerX() - contentWidth / 2,
+                                    parentRect.top - contentHeight);
+
+            case BottomCenter:
+                return new Point(parentRect.centerX() - contentWidth / 2,
+                                 parentRect.bottom);
+
+            case TopLeft:
+                return new Point(parentRect.left,
+                                 parentRect.top - contentHeight);
+
+            case BottomLeft:
+                return new Point(parentRect.left,
+                                 parentRect.bottom);
+
+            case TopRight:
+                return new Point(parentRect.right - contentWidth,
+                                 parentRect.top - contentHeight);
+
+            case BottomRight:
+                return new Point(parentRect.right - contentWidth,
+                                  parentRect.bottom);
         }
     }
 
