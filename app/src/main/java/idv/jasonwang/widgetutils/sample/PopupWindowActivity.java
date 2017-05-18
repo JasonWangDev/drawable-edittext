@@ -2,7 +2,6 @@ package idv.jasonwang.widgetutils.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 
 /**
@@ -32,33 +31,6 @@ public class PopupWindowActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         window.show(v);
-    }
-
-
-
-
-    private int getRightOffsetX() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        switch (metrics.densityDpi)
-        {
-            default:
-            case DisplayMetrics.DENSITY_MEDIUM:
-                return 10;
-
-            case DisplayMetrics.DENSITY_HIGH:
-                return 12;
-
-            case DisplayMetrics.DENSITY_XHIGH:
-                return 14;
-
-            case DisplayMetrics.DENSITY_XXHIGH:
-                return 23;
-
-            case DisplayMetrics.DENSITY_XXXHIGH:
-                return 30;
-        }
     }
 
 }

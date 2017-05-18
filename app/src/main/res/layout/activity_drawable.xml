@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="idv.jasonwang.widgetutils.sample.SampleActivity">
+    tools:context="idv.jasonwang.widgetutils.sample.DrawableActivity">
 
-    <idv.jasonwang.widgetutils.DrawableEditText
+    <idv.jasonwang.widgetutils.drawable.DrawableEditText
         android:id="@+id/drawableEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         app:layout_constraintLeft_toRightOf="@+id/drawableEditText"
         app:layout_constraintTop_toTopOf="@+id/drawableEditText" />
 
-    <idv.jasonwang.widgetutils.DrawableCheckBox
+    <idv.jasonwang.widgetutils.drawable.DrawableCheckBox
         android:id="@+id/drawableCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

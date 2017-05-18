@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import idv.jasonwang.widgetutils.DrawableCheckBox;
-import idv.jasonwang.widgetutils.DrawableEditText;
+import idv.jasonwang.widgetutils.drawable.DrawableCheckBox;
+import idv.jasonwang.widgetutils.drawable.DrawableEditText;
 
-public class SampleActivity extends AppCompatActivity {
+public class DrawableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sample);
+        setContentView(R.layout.activity_drawable);
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package idv.jasonwang.widgetutils;
+package idv.jasonwang.widgetutils.drawable;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,11 +6,13 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
+import idv.jasonwang.widgetutils.R;
+
 /**
- *支援設置顯示圖片大小的 EditText
+ *支援設置顯示圖片大小的 CheckBox
  *
- * 使用 EditText 需要搭配圖片並控制圖片大小時，原生的 EditText 沒有設置 Drawable 長寬大小相關的屬性，雖然可
- * 以透過 layer-list 來設置圖片 (drawable 屬性) 以及圖片大小 (width、height 屬性) 解決此問題，但其中的 width、
+ * 使用 CheckBox 需要搭配圖片並控制圖片大小時，原生的 CheckBox 沒有設置 Drawable 長寬大小相關的屬性，雖然
+ * 可以透過 layer-list 來設置圖片 (drawable 屬性) 以及圖片大小 (width、height 屬性) 解決此問題，但其中的 width、
  * height 兩個屬性僅支援 API 22 (含)以上，在舊版的設備執行時會產生相容性問題，無法依照設定的屬性改變大小。
  *
  * 設置圖片時，在 XML 中可以選擇各別設置顯示四個方位的圖片與大小，如果沒有指定對應方位的圖片大小時，
@@ -21,7 +23,7 @@ import android.util.AttributeSet;
  *
  * Created by jason on 2017/5/11.
  */
-public class DrawableEditText extends android.support.v7.widget.AppCompatEditText {
+public class DrawableCheckBox extends android.support.v7.widget.AppCompatCheckBox {
 
     private int[][] drawableSize = {{-1, -1}, // Left (width, height)
                                     {-1, -1}, // Top (width, height)
@@ -29,19 +31,19 @@ public class DrawableEditText extends android.support.v7.widget.AppCompatEditTex
                                     {-1, -1}};// Bottom (width, height)
 
 
-    public DrawableEditText(Context context) {
+    public DrawableCheckBox(Context context) {
         super(context);
 
         init(context, null);
     }
 
-    public DrawableEditText(Context context, AttributeSet attrs) {
+    public DrawableCheckBox(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         init(context, attrs);
     }
 
-    public DrawableEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DrawableCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(context, attrs);
@@ -175,7 +177,7 @@ public class DrawableEditText extends android.support.v7.widget.AppCompatEditTex
 
     /**
      *
-     * 根據屬性設置並顯示 EdiText 個四方位的圖片
+     * 根據屬性設置並顯示 CheckBox 個四方位的圖片
      */
     public void setDrawable(Drawable drawableLeft, Drawable drawableTop, Drawable drawableRight, Drawable drawableBottom) {
         if (drawableLeft != null && drawableSize[0][0] > 0 && drawableSize[0][1] > 0)
@@ -205,7 +207,7 @@ public class DrawableEditText extends android.support.v7.widget.AppCompatEditTex
         if (attrs == null)
             return;
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawableEditText);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawableCheckBox);
 
         Drawable[] drawables = {typedArray.getDrawable(R.styleable.DrawableEditText_drawableLeft),
                                 typedArray.getDrawable(R.styleable.DrawableEditText_drawableTop),
@@ -213,17 +215,17 @@ public class DrawableEditText extends android.support.v7.widget.AppCompatEditTex
                                 typedArray.getDrawable(R.styleable.DrawableEditText_drawableBottom)};
 
         // 沒有設置圖片時大小預設 0，有設置圖片但沒有設置大小時預設對應解析度的圖片的原始大小
-        drawableSize[0][0] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableLeftWidth, drawables[0].getIntrinsicWidth()) : 0;
-        drawableSize[0][1] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableLeftHeight, drawables[0].getIntrinsicHeight()) : 0;
+        drawableSize[0][0] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableLeftWidth, drawables[0].getIntrinsicWidth()) : 0;
+        drawableSize[0][1] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableLeftHeight, drawables[0].getIntrinsicHeight()) : 0;
 
-        drawableSize[1][0] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableTopWidth, drawables[1].getIntrinsicWidth()) : 0;
-        drawableSize[1][1] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableTopHeight, drawables[1].getIntrinsicHeight()) : 0;
+        drawableSize[1][0] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableTopWidth, drawables[1].getIntrinsicWidth()) : 0;
+        drawableSize[1][1] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableTopHeight, drawables[1].getIntrinsicHeight()) : 0;
 
-        drawableSize[2][0] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableRightWidth, drawables[2].getIntrinsicWidth()) : 0;
-        drawableSize[2][1] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableRightHeight, drawables[2].getIntrinsicHeight()) : 0;
+        drawableSize[2][0] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableRightWidth, drawables[2].getIntrinsicWidth()) : 0;
+        drawableSize[2][1] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableRightHeight, drawables[2].getIntrinsicHeight()) : 0;
 
-        drawableSize[3][0] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableBottomWidth, drawables[3].getIntrinsicWidth()) : 0;
-        drawableSize[3][1] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableBottomHeight, drawables[3].getIntrinsicHeight()) : 0;
+        drawableSize[3][0] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableBottomWidth, drawables[3].getIntrinsicWidth()) : 0;
+        drawableSize[3][1] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableCheckBox_drawableBottomHeight, drawables[3].getIntrinsicHeight()) : 0;
 
         // 參數物件使用完畢後必定釋放資源
         typedArray.recycle();

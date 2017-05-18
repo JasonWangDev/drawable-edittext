@@ -1,4 +1,4 @@
-package idv.jasonwang.widgetutils.sample;
+package idv.jasonwang.widgetutils.popupwindow;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -12,16 +12,74 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.BottomCenter;
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.BottomLeft;
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.BottomRight;
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.TopCenter;
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.TopLeft;
+import static idv.jasonwang.widgetutils.popupwindow.PopupWindowTemplate.Position.TopRight;
+
 /**
  * Created by jason on 2017/5/18.
  */
 public abstract class PopupWindowTemplate {
 
     protected abstract View createView(LayoutInflater inflater);
+    protected abstract Offset setOffset(Position position, Density density);
+
+
+    protected enum Position {
+        TopCenter,
+        BottomCenter,
+        TopLeft,
+        BottomLeft,
+        TopRight,
+        BottomRight
+    }
+
+    protected enum Density {
+        Medium,
+        High,
+        XHigh,
+        XXHigh,
+        XXXHigh
+    }
+
+
+    protected class Offset {
+        int x, y;
+
+
+        public Offset() { }
+
+        public Offset(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+
+        public int getX() {
+            return x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
+    }
 
 
     private Activity activity;
     private LayoutInflater inflater;
+
+    private DisplayMetrics metrics;
 
     private View contentView;
     private PopupWindow popupWindow;
@@ -30,21 +88,56 @@ public abstract class PopupWindowTemplate {
     public PopupWindowTemplate(Activity activity) {
         this.activity = activity;
         this.inflater = LayoutInflater.from(activity);
+
+        metrics = new DisplayMetrics();
     }
 
 
     public void show(View parent) {
-        show(parent, 0, 0);
-    }
-
-    public void show(View parent, int offsetX, int offsetY) {
         buildContentView();
         buildPopupWindow();
 
         Position position = getPosition(activity, parent, contentView);
-        Point point = getPoint(position, parent, contentView);
+        Point location = getLocation(position, parent, contentView);
+        Offset offset = getOffset(position);
 
-        popupWindow.showAtLocation(parent, Gravity.TOP|Gravity.LEFT, point.x + offsetX, point.y + offsetY);
+        popupWindow.showAtLocation(parent,
+                                    Gravity.TOP|Gravity.LEFT,
+                                    location.x + (offset != null ? offset.getX() : 0),
+                                    location.y + (offset != null ? offset.getY() : 0));
+    }
+
+    public void dissmiss() {
+        if (popupWindow != null && popupWindow.isShowing())
+            popupWindow.dismiss();
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+
+    private Offset getOffset(Position position) {
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        switch (metrics.densityDpi)
+        {
+            default:
+            case DisplayMetrics.DENSITY_MEDIUM:
+                return setOffset(position, Density.Medium);
+
+            case DisplayMetrics.DENSITY_HIGH:
+                return setOffset(position, Density.High);
+
+            case DisplayMetrics.DENSITY_XHIGH:
+                return setOffset(position, Density.XHigh);
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+                return setOffset(position, Density.XXHigh);
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                return setOffset(position, Density.XXXHigh);
+        }
     }
 
 
@@ -66,17 +159,6 @@ public abstract class PopupWindowTemplate {
         }
     }
 
-
-    private enum Position {
-        TopCenter,
-        BottomCenter,
-        TopLeft,
-        BottomLeft,
-        TopRight,
-        BottomRight
-    }
-
-
     /**
      *
      * @param activity 傳入啟動 PopupWindow 的 Activity
@@ -86,7 +168,7 @@ public abstract class PopupWindowTemplate {
      */
     private Position getPosition(Activity activity, View parent, View content) {
         if (activity == null || parent == null || content == null)
-            return Position.BottomCenter;
+            return BottomCenter;
 
         // 螢幕尺寸(px)
         DisplayMetrics metrics = new DisplayMetrics();
@@ -123,25 +205,25 @@ public abstract class PopupWindowTemplate {
         if (isCenter)
         {
             if (isBottom)
-                return Position.BottomCenter;
+                return BottomCenter;
             else
-                return Position.TopCenter;
+                return TopCenter;
         }
         else
         {
             if (isLeft)
             {
                 if (isBottom)
-                    return Position.BottomLeft;
+                    return BottomLeft;
                 else
-                    return Position.TopLeft;
+                    return TopLeft;
             }
             else
             {
                 if (isBottom)
-                    return Position.BottomRight;
+                    return BottomRight;
                 else
-                    return Position.TopRight;
+                    return TopRight;
             }
         }
     }
@@ -153,7 +235,7 @@ public abstract class PopupWindowTemplate {
      * @param content 傳入 PopupWindow 內的 ContentView
      * @return
      */
-    private Point getPoint(Position position, View parent, View content) {
+    private Point getLocation(Position position, View parent, View content) {
         if (position == null || parent == null || content == null)
             return new Point(0, 0);
 
