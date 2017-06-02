@@ -3,10 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawable-edittext.iml" filepath="$PROJECT_DIR$/drawable-edittext.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawable-edittext-sample.iml" filepath="$PROJECT_DIR$/drawable-edittext-sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawable-edittext-sample.iml" filepath="$PROJECT_DIR$/drawable-edittext-sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/widget-utils.iml" filepath="$PROJECT_DIR$/widget-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget-utils.iml" filepath="$PROJECT_DIR$/widget-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/widget-utils-library/widget-utils-library.iml" filepath="$PROJECT_DIR$/widget-utils-library/widget-utils-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/widget-utils-library/widget-utils-library.iml" filepath="$PROJECT_DIR$/widget-utils-library/widget-utils-library.iml" />
     </modules>
   </component>
