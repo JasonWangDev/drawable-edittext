@@ -207,25 +207,25 @@ public class DrawableTextView extends android.support.v7.widget.AppCompatTextVie
         if (attrs == null)
             return;
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawableEditText);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawableTextView);
 
-        Drawable[] drawables = {typedArray.getDrawable(R.styleable.DrawableEditText_drawableLeft),
-                                typedArray.getDrawable(R.styleable.DrawableEditText_drawableTop),
-                                typedArray.getDrawable(R.styleable.DrawableEditText_drawableRight),
-                                typedArray.getDrawable(R.styleable.DrawableEditText_drawableBottom)};
+        Drawable[] drawables = {typedArray.getDrawable(R.styleable.DrawableTextView_drawableLeft),
+                                typedArray.getDrawable(R.styleable.DrawableTextView_drawableTop),
+                                typedArray.getDrawable(R.styleable.DrawableTextView_drawableRight),
+                                typedArray.getDrawable(R.styleable.DrawableTextView_drawableBottom)};
 
         // 沒有設置圖片時大小預設 0，有設置圖片但沒有設置大小時預設對應解析度的圖片的原始大小
-        drawableSize[0][0] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableLeftWidth, drawables[0].getIntrinsicWidth()) : 0;
-        drawableSize[0][1] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableLeftHeight, drawables[0].getIntrinsicHeight()) : 0;
+        drawableSize[0][0] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableLeftWidth, drawables[0].getIntrinsicWidth()) : 0;
+        drawableSize[0][1] = drawables[0] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableLeftHeight, drawables[0].getIntrinsicHeight()) : 0;
 
-        drawableSize[1][0] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableTopWidth, drawables[1].getIntrinsicWidth()) : 0;
-        drawableSize[1][1] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableTopHeight, drawables[1].getIntrinsicHeight()) : 0;
+        drawableSize[1][0] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableTopWidth, drawables[1].getIntrinsicWidth()) : 0;
+        drawableSize[1][1] = drawables[1] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableTopHeight, drawables[1].getIntrinsicHeight()) : 0;
 
-        drawableSize[2][0] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableRightWidth, drawables[2].getIntrinsicWidth()) : 0;
-        drawableSize[2][1] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableRightHeight, drawables[2].getIntrinsicHeight()) : 0;
+        drawableSize[2][0] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableRightWidth, drawables[2].getIntrinsicWidth()) : 0;
+        drawableSize[2][1] = drawables[2] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableRightHeight, drawables[2].getIntrinsicHeight()) : 0;
 
-        drawableSize[3][0] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableBottomWidth, drawables[3].getIntrinsicWidth()) : 0;
-        drawableSize[3][1] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableEditText_drawableBottomHeight, drawables[3].getIntrinsicHeight()) : 0;
+        drawableSize[3][0] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableBottomWidth, drawables[3].getIntrinsicWidth()) : 0;
+        drawableSize[3][1] = drawables[3] != null ? typedArray.getDimensionPixelSize(R.styleable.DrawableTextView_drawableBottomHeight, drawables[3].getIntrinsicHeight()) : 0;
 
         // 參數物件使用完畢後必定釋放資源
         typedArray.recycle();
